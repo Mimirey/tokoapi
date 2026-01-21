@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: AppRoutes.listPage,
+      initialRoute: AppRoutes.startupPage,
       getPages: AppPages.pages,
     );
   }

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" 
-package="com.example.latihan2_11pplg2">
+package="com.example.latihan_tokoapi">
     
     <application
         android:label="latihan_tokoapi"
