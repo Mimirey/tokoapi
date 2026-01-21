@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:latihan_tokoapi/components/title_text.dart';
-import 'package:latihan_tokoapi/configs/routes.dart';
-import 'package:latihan_tokoapi/controllers/list_controller.dart';
+import 'package:latihan_tokoapi/controllers/inspect_controller.dart';
 
-//home pagenya yang ini
-class ListPage extends StatelessWidget {
-  const ListPage({super.key});
+//inspect pagenya yang ini
+class InspectPage extends StatelessWidget {
+  const InspectPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ListController c = Get.put(ListController());
+    final InspectController c = Get.put(InspectController());
     return Scaffold(
       appBar: AppBar(
         title: const TitleText(
-          text: "Book List",
+          text: "Inspect Book",
           fontSize: 30,
-          color:  Color.fromARGB(255, 135, 193, 137),
+          color: Color.fromARGB(255, 135, 193, 137),
         ),
       ),
       // body: Obx(() {
@@ -60,10 +58,6 @@ class ListPage extends StatelessWidget {
       //     },
       //   );
       // }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.toNamed(AppRoutes.addPage),
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }
