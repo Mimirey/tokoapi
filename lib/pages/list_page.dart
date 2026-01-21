@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+  //home pagenya yang ini
 class ListPage extends StatelessWidget {
   const ListPage({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -12,4 +14,4 @@ class ListPage extends StatelessWidget {
       ),
     );
   }
-}
+} 
