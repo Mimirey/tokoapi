@@ -23,12 +23,12 @@ class StartupPage extends StatelessWidget {
       appBar: AppBar(),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.all(5),
+                margin: EdgeInsets.all(0),
                 child: Center(
                   child: Text(
                     "UsBook",
@@ -42,7 +42,7 @@ class StartupPage extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(5),
+                margin: EdgeInsets.only(bottom: 5),
                 child: Center(
                   child: Text(
                     "List Buku Favorit Anda!",

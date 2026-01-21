@@ -4,4 +4,5 @@ class AppRoutes {
   static const String addPage= '/addPage';
   static const String editPage= '/editPage';
   static const String inspectPage= '/inspectPage';
+  static const String navbarPage= '/navbarPage';
 }
