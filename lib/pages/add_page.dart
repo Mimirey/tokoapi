@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get.dart';
+import 'package:latihan_tokoapi/controllers/add_controller.dart';
 
-//add pagenya yang ini
 class AddPage extends StatelessWidget {
   const AddPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // final AddController c = Get.find();   <------------------------------ addcontroller
-    // final ListController listController = Get.find();
+    final AddController c = Get.find();
 
     return Scaffold(
       appBar: AppBar(title: const Text("Tambah buku")),
@@ -18,28 +16,38 @@ class AddPage extends StatelessWidget {
         child: Column(
           children: [
             TextField(
-              // controller: c.titleController, <------------------------------ addcontroller
+              controller: c.gambarController,
               decoration: const InputDecoration(labelText: "Url Gambar"),
             ),
             const SizedBox(height: 12),
+
             TextField(
-              // controller: c.descController,  <------------------------------ addcontroller
-              decoration: const InputDecoration(labelText: "Author"),
-            ),
-            const SizedBox(height: 12),
-            TextField(
-              // controller: c.descController,  <------------------------------ addcontroller
-              decoration: const InputDecoration(labelText: "Harga"),
-            ),
-            const SizedBox(height: 12),
-            TextField(
-              // controller: c.descController,  <------------------------------ addcontroller
-              decoration: const InputDecoration(labelText: "Nama"),
+              controller: c.namaController,
+              decoration: const InputDecoration(labelText: "Judul Buku"),
             ),
             const SizedBox(height: 12),
 
+            TextField(
+              controller: c.authorController,
+              decoration: const InputDecoration(labelText: "Author"),
+            ),
+            const SizedBox(height: 12),
+
+            TextField(
+              controller: c.genreController,
+              decoration: const InputDecoration(labelText: "Genre"),
+            ),
+            const SizedBox(height: 12),
+
+            TextField(
+              controller: c.hargaController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(labelText: "Harga"),
+            ),
+            const SizedBox(height: 20),
+
             ElevatedButton(
-              onPressed: () => Get.back(),
+              onPressed: c.tambahBuku,
               child: const Text("Tambah"),
             ),
           ],
