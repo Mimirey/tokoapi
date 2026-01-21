@@ -1,45 +1,27 @@
 {
   "project_info": {
-    "project_number": "230016008749",
-    "firebase_url": "https://flutternotifylatihan-default-rtdb.firebaseio.com",
-    "project_id": "flutternotifylatihan",
-    "storage_bucket": "flutternotifylatihan.firebasestorage.app"
+    "project_number": "680270221774",
+    "firebase_url": "https://tokoapi-470ae-default-rtdb.firebaseio.com",
+    "project_id": "tokoapi-470ae",
+    "storage_bucket": "tokoapi-470ae.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:230016008749:android:1d1cbb57251a78db162ea4",
+        "mobilesdk_app_id": "1:680270221774:android:9fb80b0376d9c018afdb9f",
         "android_client_info": {
-          "package_name": "com.example.latihan2_11pplg2"
+          "package_name": "com.example.latihan_tokoapi"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "230016008749-dpdcb50q2ofgqep8lj6tan2qacv7a6b6.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.latihan2_11pplg2",
-            "certificate_hash": "8d0d653293b7cee637e336665d1680f18a39c864"
-          }
-        },
-        {
-          "client_id": "230016008749-d94o53ghf80l1f5d6mshrbeosh1iv0qc.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC2Ch5d9P3aSUozUXc6vSJrOQL5rfW0-8Q"
+          "current_key": "AIzaSyBhosF_lB4GdhfAAewvvYM5vCcP1eNcsWs"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "230016008749-d94o53ghf80l1f5d6mshrbeosh1iv0qc.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
