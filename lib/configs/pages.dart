@@ -8,6 +8,7 @@ import 'package:latihan_tokoapi/bindings/startup_binding.dart';
 import 'package:latihan_tokoapi/configs/routes.dart';
 import 'package:latihan_tokoapi/pages/add_page.dart';
 import 'package:latihan_tokoapi/pages/edit_page.dart';
+import 'package:latihan_tokoapi/pages/home_page.dart';
 import 'package:latihan_tokoapi/pages/inspect_page.dart';
 import 'package:latihan_tokoapi/pages/list_page.dart';
 import 'package:latihan_tokoapi/pages/navbar_page.dart';
@@ -21,5 +22,6 @@ class AppPages {
     GetPage(name: AppRoutes.editPage, page: ()=>EditPage(), binding: EditBinding()),
     GetPage(name: AppRoutes.inspectPage, page: ()=>InspectPage(), binding: InspectBinding()),
     GetPage(name: AppRoutes.navbarPage, page: ()=>NavbarPage(), binding: NavbarBinding()),
+    GetPage(name: AppRoutes.homePage, page: ()=>Homepage(),)
   ];
 }
