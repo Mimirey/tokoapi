@@ -37,7 +37,7 @@ class ListPage extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               child: ListTile(
                 leading: Image.network(
-                  buku.gambarUrl,
+                  buku.gambar,
                   width: 50,
                   errorBuilder: (_, __, ___) =>
                       const Icon(Icons.book),
