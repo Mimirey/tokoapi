@@ -3,31 +3,40 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  final double? height;
 
   const CustomButton({
     super.key,
     required this.text,
     required this.onPressed,
-    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: height ?? 48,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color.fromARGB(255, 135, 193, 137),
-          foregroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(100),
-            side: const BorderSide(color: Colors.black, width: 2),
+    final size = MediaQuery.of(context).size;
+
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: size.width * 0.72,   
+        height: size.height * 0.08, 
+        decoration: BoxDecoration(
+          color: const Color(0xFF7FBC95),
+          borderRadius: BorderRadius.circular(100),
+          border: Border.all(
+            color: const Color(0xFF1E1E1E),
+            width: 3,
           ),
         ),
-        child: Text(text),
+        alignment: Alignment.center,
+        child: Text(
+          text,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: size.width * 0.05, 
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ),
     );
   }

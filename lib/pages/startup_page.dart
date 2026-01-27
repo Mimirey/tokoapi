@@ -11,103 +11,134 @@ class StartupPage extends StatelessWidget {
     Get.offAll(
       () => ListPage(),
       binding: BindingsBuilder(() {
-        Get.put(ListController);
+        Get.put(ListController());
       }),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(),
+      backgroundColor: const Color(0xFFFDFFFF),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: EdgeInsets.all(0),
-                child: Center(
-                  child: Text(
-                    "UsBook",
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.2,
-                      color: const Color.fromARGB(255, 135, 193, 137),
+        child: Center(
+          child: AspectRatio(
+            aspectRatio: 9 / 16, 
+            child: Stack(
+              children: [
+                
+                Positioned(
+                  top: size.height * 0.06,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: Text(
+                      'UsBook.',
+                      style: TextStyle(
+                        color: const Color(0xFF77BB92),
+                        fontSize: size.width * 0.09,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w900,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.only(bottom: 5),
-                child: Center(
-                  child: Text(
-                    "List Buku Favorit Anda!",
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.2,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(vertical: 12),
-                  child: Image.network(
-                    "https://imgx.gridstore.id/gridstore/frontend/asset/upload/emagz/bobo/cover/large/bobo-14-2023-1681091715-bobo.webp"),
-                    width: 200,//ganti gambarnya
-                    height: 200,
-                  ),
-              ),
 
-              Container(
-                margin: EdgeInsets.all(5),
-                child: Center(
-                  child: Text(
-                    "Add And List Your Book",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.2,
-                      color: Colors.black,
+                
+                Positioned(
+                  top: size.height * 0.12,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: Text(
+                      'List Buku Favorit Anda!',
+                      style: TextStyle(
+                        fontSize: size.width * 0.04,
+                        fontFamily: 'Poppins',
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.all(5),
-                child: Center(
-                  child: Text(
-                    "Explore Library of fitur UsBook",
-                    style: TextStyle(
-                      fontSize: 12,
-                      letterSpacing: 1.2,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.all(5),
-                child: Center(
-                  child: Text(
-                    "Read anywhere Add anytime",
-                    style: TextStyle(
-                      fontSize: 13.5,
-                      letterSpacing: 1.2,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
 
-              CustomButton(text: 'Get Started', onPressed: _goNext),
-            ],
+               
+                Positioned(
+                  top: size.height * 0.18,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/UsBook.png',
+                      width: size.width * 0.7,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+
+               
+                Positioned(
+                  top: size.height * 0.53,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: Text(
+                      'Add And List Your Book',
+                      style: TextStyle(
+                        fontSize: size.width * 0.055,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ),
+                ),
+
+               
+                Positioned(
+                  top: size.height * 0.58,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: Text(
+                      'Explore Library of fitur UsBook',
+                      style: TextStyle(
+                        fontSize: size.width * 0.035,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                  ),
+                ),
+
+                
+                Positioned(
+                  top: size.height * 0.62,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: Text(
+                      'Read anywhere Add anytime',
+                      style: TextStyle(
+                        fontSize: size.width * 0.035,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                  ),
+                ),
+
+               
+                Positioned(
+                  bottom: size.height * 0.05,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: CustomButton(
+                      text: 'Get Started',
+                      onPressed: _goNext,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
