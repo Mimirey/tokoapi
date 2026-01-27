@@ -66,7 +66,7 @@ class AddPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
