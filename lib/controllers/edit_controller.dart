@@ -19,7 +19,7 @@ class EditController extends GetxController {
     super.onInit();
     buku = Get.arguments as Buku;
 
-    gambarController.text = buku.gambarUrl;
+    gambarController.text = buku.gambar;
     authorController.text = buku.author;
     genreController.text = buku.genre;
     hargaController.text = buku.harga.toString();
@@ -29,7 +29,7 @@ class EditController extends GetxController {
   void updateBuku() async {
     final updatedBuku = Buku(
       id: buku.id,
-      gambarUrl: gambarController.text,
+      gambar: gambarController.text,
       genre: genreController.text,
       author: authorController.text,
       harga: int.parse(hargaController.text),

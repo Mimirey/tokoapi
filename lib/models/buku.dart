@@ -1,21 +1,23 @@
 class Buku {
   final String id;
-  final String gambarUrl;
+  final String gambar;
   final String genre;
   final String author;
   final int harga;
   final String nama;
 
-  Buku( {required this.id, required this.gambarUrl, required this.genre, required this.author, required this.harga, required this.nama,});
+  Buku( {required this.id, required this.gambar, required this.genre, required this.author, required this.harga, required this.nama,});
 
   factory Buku.fromMap(String id, Map data){
     return Buku(
       id: id, 
-      gambarUrl: data['gambarUrl'], 
-      genre: data['genre'], 
-      author: data['author'], 
-      harga: data['harga'],
-      nama: data['nama']
+      gambar: data['gambar'] ?? '', 
+      genre: data['genre']?? '', 
+      author: data['author']?? '', 
+      harga: data['harga'] is int
+        ? data['harga']
+        : int.tryParse(data['harga'].toString()) ?? 0,
+      nama: data['nama']?? ''
     );
   }
 
@@ -24,7 +26,7 @@ class Buku {
       "nama": nama,
       "author": author,
       "genre": genre,
-      "gambar": gambarUrl,
+      "gambar": gambar,
       "harga": harga
     };
   }

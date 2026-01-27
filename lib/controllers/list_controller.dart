@@ -10,12 +10,19 @@ class ListController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _service.streamBuku().listen((data) {
+    _service.streamBuku().listen(
+    (data) {
       bukuList.value = data;
-    });
+    },
+    onError: (e) {
+      print("STREAM ERROR: $e");
+      bukuList.clear();
+    },
+  );
   }
 
   void hapusBuku(String id) async {
     await _service.hapusBuku(id);
   }
+  
 }

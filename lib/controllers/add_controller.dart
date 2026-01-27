@@ -26,7 +26,7 @@ class AddController extends GetxController {
 
     final buku = Buku(
       id: "",
-      gambarUrl: gambarController.text,
+      gambar: gambarController.text,
       genre: genreController.text,
       author: authorController.text,
       harga: int.parse(hargaController.text),
