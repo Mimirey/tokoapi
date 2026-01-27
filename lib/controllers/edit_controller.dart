@@ -26,6 +26,7 @@ class EditController extends GetxController {
     namaController.text = buku.nama;
   }
 
+  /// ================= UPDATE =================
   void updateBuku() async {
     final updatedBuku = Buku(
       id: buku.id,
@@ -39,6 +40,12 @@ class EditController extends GetxController {
     await _service.updateBuku(updatedBuku);
     Get.back();
   }
+
+  /// ================= DELETE =================
+  ///void hapusBuku() async {
+  ///  await _service.deleteBuku(buku.id);
+   /// Get.back(); // kembali setelah hapus
+ /// }
 
   @override
   void onClose() {

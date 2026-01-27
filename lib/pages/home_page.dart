@@ -211,7 +211,7 @@ class Homepage extends StatelessWidget {
                 child: Icon(
                   Icons.delete,
                   size: 20,
-                  color: Colors.white,
+                  color: Colors.white, 
                 ),
               ),
             ),

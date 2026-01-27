@@ -78,7 +78,7 @@ class StartupPage extends StatelessWidget {
 
                
                 Positioned(
-                  top: size.height * 0.53,
+                  top: size.height * 0.57,
                   left: 0,
                   right: 0,
                   child: Center(
@@ -95,7 +95,7 @@ class StartupPage extends StatelessWidget {
 
                
                 Positioned(
-                  top: size.height * 0.58,
+                  top: size.height * 0.62,
                   left: 0,
                   right: 0,
                   child: Center(
@@ -111,7 +111,7 @@ class StartupPage extends StatelessWidget {
 
                 
                 Positioned(
-                  top: size.height * 0.62,
+                  top: size.height * 0.65,
                   left: 0,
                   right: 0,
                   child: Center(
