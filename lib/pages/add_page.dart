@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:latihan_tokoapi/controllers/add_controller.dart';
 
@@ -8,172 +9,154 @@ class AddPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AddController c = Get.find();
+    final size = MediaQuery.of(context).size;
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Center(
-          child: AspectRatio(
-            aspectRatio: 9 / 16,
-            child: Stack(
-              children: [
-                /// HEADER
-                Positioned(
-                  left: 0,
-                  top: 0,
-                  right: 0,
-                  child: Container(
-                    height: 90,
-                    color: const Color(0xFF77BB92),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /// HEADER
+              Container(
+                height: size.height * 0.12,
+                width: double.infinity,
+                color: const Color(0xFF77BB92),
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  'UsBook.',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: size.width * 0.08,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins',
                   ),
                 ),
+              ),
 
-                /// TITLE
-                const Positioned(
-                  left: 20,
-                  top: 12,
-                  child: Text(
-                    'UsBook.',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 32,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w700,
+              const SizedBox(height: 8),
+
+              Text(
+                'List Buku Favorit Anda!',
+                style: TextStyle(
+                  fontSize: size.width * 0.035,
+                  fontFamily: 'Poppins',
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              Text(
+                'Add Book',
+                style: TextStyle(
+                  fontSize: size.width * 0.05,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: 'Poppins',
+                ),
+              ),
+
+              const SizedBox(height: 16),
+
+              /// FORM CARD
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF7FBC95),
+                  borderRadius: BorderRadius.circular(28),
+                ),
+                child: Column(
+                  children: [
+                    _inputBox(
+                      hint: "Judul",
+                      controller: c.namaController,
                     ),
-                  ),
-                ),
+                    const SizedBox(height: 16),
 
-                /// SUBTITLE
-                const Positioned(
-                  left: 20,
-                  top: 52,
-                  child: Text(
-                    'List Buku Favorit Anda!',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: 'Poppins',
+                    _inputBox(
+                      hint: "Deskripsi",
+                      controller: c.genreController,
                     ),
-                  ),
-                ),
+                    const SizedBox(height: 16),
 
-                /// ADD BOOK TEXT
-                const Positioned(
-                  left: 20,
-                  top: 110,
-                  child: Text(
-                    'Add Book',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w700,
+                    _inputBox(
+                      hint: "Author",
+                      controller: c.authorController,
                     ),
-                  ),
-                ),
+                    const SizedBox(height: 16),
 
-                /// CARD
-                Positioned(
-                  left: 20,
-                  right: 20,
-                  top: 150,
-                  child: Container(
-                    height: 380,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF7FBC95),
-                      borderRadius: BorderRadius.circular(28),
+                    _inputBox(
+                      hint: "Harga",
+                      controller: c.hargaController,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
                     ),
-                  ),
-                ),
+                    const SizedBox(height: 16),
 
-                /// ===== INPUT JUDUL =====
-                _inputBox(
-                  top: 180,
-                  hint: "Judul",
-                  controller: c.namaController,
-                ),
+                    _inputBox(
+                      hint: "Url Image",
+                      controller: c.gambarController,
+                    ),
 
-                /// ===== INPUT DESKRIPSI =====
-                _inputBox(
-                  top: 240,
-                  hint: "Deskripsi",
-                  controller: c.genreController,
-                ),
+                    const SizedBox(height: 24),
 
-                /// ===== INPUT AUTHOR =====
-                _inputBox(
-                  top: 300,
-                  hint: "Author",
-                  controller: c.authorController,
-                ),
-
-                /// ===== INPUT URL IMAGE =====
-                _inputBox(
-                  top: 360,
-                  hint: "Url Image",
-                  controller: c.gambarController,
-                ),
-
-                /// ===== SUBMIT BUTTON =====
-                Positioned(
-                  right: 40,
-                  bottom: 100,
-                  child: GestureDetector(
-                    onTap: c.tambahBuku,
-                    child: Container(
-                      width: 64,
-                      height: 64,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF54E15D),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Center(
-                        child: Icon(
-                          Icons.check, // ✔ CENTANG
-                          color: Colors.white,
-                          size: 36,
+                    /// SUBMIT BUTTON
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: GestureDetector(
+                        onTap: c.tambahBuku,
+                        child: Container(
+                          width: 60,
+                          height: 60,
+                          decoration: const BoxDecoration(
+                            color: Color(0xFF54E15D),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.check,
+                            color: Colors.white,
+                            size: 32,
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
+}
 
-  /// ===== INPUT FIELD UI =====
-  Widget _inputBox({
-    required double top,
-    required String hint,
-    required TextEditingController controller,
-  }) {
-    return Positioned(
-      left: 40,
-      right: 40,
-      top: top,
-      child: Container(
-        height: 48,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(32),
-        ),
-        alignment: Alignment.center,
-        child: TextField(
-          controller: controller,
-          decoration: InputDecoration(
-            hintText: hint,
-            hintStyle: const TextStyle(
-              fontFamily: 'Poppins',
-              fontSize: 14,
-            ),
-            border: InputBorder.none,
-          ),
-        ),
+  
+ Widget _inputBox({
+  required String hint,
+  required TextEditingController controller,
+  TextInputType? keyboardType,
+  List<TextInputFormatter>? inputFormatters,
+}) {
+  return Container(
+    height: 52,
+    padding: const EdgeInsets.symmetric(horizontal: 20),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(30),
+    ),
+    child: TextField(
+      controller: controller,
+      keyboardType: keyboardType,
+      inputFormatters: inputFormatters,
+      decoration: InputDecoration(
+        hintText: hint,
+        border: InputBorder.none,
       ),
-    );
-  }
+    ),
+  );
 }
