@@ -15,144 +15,131 @@ class ListPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Center(
-          child: AspectRatio(
-            aspectRatio: 9 / 16,
-            child: Stack(
-              children: [
-                /// HEADER
-                Positioned(
-                  top: -12,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    height: size.height * 0.12,
-                    color: const Color(0xFF77BB92),
+        child: SizedBox(
+          width: size.width,
+          height: size.height,
+          child: Stack(
+            children: [
+              /// HEADER
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: Container(height: 90, color: const Color(0xFF77BB92)),
+              ),
+
+              /// TITLE
+              Positioned(
+                left: 20,
+                top: 6,
+                child: Text(
+                  'UsBook.',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: size.width * 0.08,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
+              ),
 
-                /// TITLE
-                Positioned(
-                  left: 20,
-                  top: 6,
-                  child: Text(
-                    'UsBook.',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: size.width * 0.08,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w900,
-                    ),
+              /// SUBTITLE
+              Positioned(
+                left: 20,
+                top: size.height * 0.25,
+                child: Text(
+                  'List Buku Favorit Anda!',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: size.width * 0.035,
+                    fontFamily: 'Poppins',
                   ),
                 ),
+              ),
 
-                /// SUBTITLE
-                Positioned(
-                  left: 20,
-                  top: size.height * 0.06,
-                  child: Text(
-                    'List Buku Favorit Anda!',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: size.width * 0.035,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                ),
-
-                /// YOUR LIST
-                Positioned(
-                  left: 20,
-                  top: size.height * 0.14,
-                  child: Row(
-                    children: [
-                      Text(
-                        'Your List',
-                        style: TextStyle(
-                          fontSize: size.width * 0.04,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w500,
-                        ),
+              /// YOUR LIST
+              Positioned(
+                left: 20,
+                top: size.height * 0.15,
+                child: Row(
+                  children: [
+                    Text(
+                      'Your List',
+                      style: TextStyle(
+                        fontSize: size.width * 0.04,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
                       ),
-                      const SizedBox(width: 6),
-                      const Icon(Icons.keyboard_arrow_down),
-                    ],
-                  ),
+                    ),
+                    const Icon(Icons.keyboard_arrow_down),
+                  ],
                 ),
+              ),
 
-                /// BOOK LIST
-                Positioned(
-                  left: 20,
-                  right: 20,
-                  top: size.height * 0.19,
-                  bottom: size.height * 0.22,
-                  child: Obx(() {
-                    if (c.bukuList.isEmpty) {
-                      return Center(
-                        child: Text(
-                          "Belum ada buku",
-                          style: TextStyle(
-                            fontSize: size.width * 0.14,
-                            fontFamily: 'Poppins',
-                            color: Colors.grey,
-                          ),
+              /// BOOK LIST
+              Positioned.fill(
+                top: 120,
+                child: Obx(() {
+                  return ListView.builder(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    itemCount: c.bukuList.length,
+                    itemBuilder: (context, index) {
+                      final buku = c.bukuList[index];
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: _bookCard(
+                          size: size,
+                          buku: buku,
+                          onEdit: () {},
+                          onDelete: () {
+                            Get.defaultDialog(
+                              title: 'Hapus Buku',
+                              middleText: 'Yakin ingin menghapus buku ini?',
+                              textConfirm: 'Hapus',
+                              textCancel: 'Batal',
+                              confirmTextColor: Colors.white,
+                              onConfirm: () {
+                                c.hapusBuku(buku.id);
+                                Get.back();
+                              },
+                            );
+                          },
                         ),
                       );
-                    }
+                    },
+                  );
+                }),
+              ),
 
-                    return ListView.builder(
-                      itemCount: c.bukuList.length,
-                      itemBuilder: (context, index) {
-                        final Buku buku = c.bukuList[index];
-
-                        return Padding(
-                          padding: EdgeInsets.only(
-                            bottom: size.height * 0.02,
-                          ),
-                          child: _bookCard(
-                            size: size,
-                            buku: buku,
-                            onEdit: () {
-                              Get.toNamed(
-                                AppRoutes.editPage,
-                                arguments: buku,
-                              );
-                            },
-                            onDelete: () {
-                              c.hapusBuku(buku.id);
-                            },
-                          ),
-                        );
-                      },
-                    );
-                  }),
-                ),
-
-                /// ADD BUTTON
-                Positioned(
-                  right: 24,
-                  bottom: 24,
-                  child: GestureDetector(
-                    onTap: () => Get.toNamed(AppRoutes.addPage),
-                    child: Container(
-                      width: size.width * 0.13,
-                      height: size.width * 0.13,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF7FBC95),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Center(
-                        child: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 40,
+              /// ADD BUTTON
+              Positioned(
+                right: 24,
+                bottom: 24,
+                child: GestureDetector(
+                  onTap: () => Get.toNamed(AppRoutes.addPage),
+                  child: Container(
+                    width: size.width * 0.10,
+                    height: size.width * 0.10,
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(1),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          color: Color.fromARGB(255, 119, 199, 149),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Center(
+                          child: Icon(Icons.add, color: Colors.white, size: 20),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -166,7 +153,7 @@ class ListPage extends StatelessWidget {
     required VoidCallback onDelete,
   }) {
     return Container(
-      height: size.height * 0.14,
+      height: 120,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: const Color(0xFF7FBC95),
@@ -187,11 +174,8 @@ class ListPage extends StatelessWidget {
               child: Image.network(
                 buku.gambar,
                 fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => const Icon(
-                  Icons.book,
-                  size: 30,
-                  color: Colors.grey,
-                ),
+                errorBuilder: (_, __, ___) =>
+                    const Icon(Icons.book, size: 30, color: Colors.grey),
               ),
             ),
           ),
@@ -226,13 +210,25 @@ class ListPage extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
+                Text(
+                  buku.harga.toString(),
+                  style: TextStyle(
+                    fontSize: size.width * 0.032,
+                    fontFamily: 'Poppins',
+                    color: const Color.fromARGB(255, 23, 68, 24),
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ],
             ),
           ),
 
           /// EDIT BUTTON
           GestureDetector(
-            onTap: onEdit,
+            onTap: () {
+              Get.toNamed(AppRoutes.editPage, arguments: buku);
+            },
             child: Container(
               width: 40,
               height: 40,
@@ -241,11 +237,7 @@ class ListPage extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: const Center(
-                child: Icon(
-                  Icons.edit,
-                  size: 20,
-                  color: Colors.white,
-                ),
+                child: Icon(Icons.edit, size: 20, color: Colors.white),
               ),
             ),
           ),
@@ -263,11 +255,7 @@ class ListPage extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: const Center(
-                child: Icon(
-                  Icons.delete,
-                  size: 20,
-                  color: Colors.white,
-                ),
+                child: Icon(Icons.delete, size: 20, color: Colors.white),
               ),
             ),
           ),

@@ -42,10 +42,10 @@ class EditController extends GetxController {
   }
 
   /// ================= DELETE =================
-  ///void hapusBuku() async {
-  ///  await _service.deleteBuku(buku.id);
-   /// Get.back(); // kembali setelah hapus
- /// }
+ void hapusBuku() async {
+  await _service.hapusBuku(buku.id);
+  Get.back(); // kembali setelah hapus
+  }
 
   @override
   void onClose() {

@@ -16,132 +16,98 @@ class StartupPage extends StatelessWidget {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+ @override
+Widget build(BuildContext context) {
+  final width = MediaQuery.of(context).size.width;
+  final height = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFFFDFFFF),
-      body: SafeArea(
-        child: Center(
-          child: AspectRatio(
-            aspectRatio: 9 / 16, 
-            child: Stack(
-              children: [
-                
-                Positioned(
-                  top: size.height * 0.06,
-                  left: 0,
-                  right: 0,
-                  child: Center(
-                    child: Text(
-                      'UsBook.',
-                      style: TextStyle(
-                        color: const Color(0xFF77BB92),
-                        fontSize: size.width * 0.09,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                  ),
+  return Scaffold(
+    backgroundColor: const Color(0xFFFDFFFF),
+    body: SafeArea(
+      child: SizedBox(
+        width: width,
+        height: height,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+          
+              // Title
+              Text(
+                'UsBook.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: const Color(0xFF77BB92),
+                  fontSize: width * 0.09,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w900,
                 ),
+              ),
+          
+              // Subtitle
+              Text(
+                'List Buku Favorit Anda!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: width * 0.04,
+                  fontFamily: 'Poppins',
+                ),
+              ),
+          
+              // Image
+              Image.asset(
+                'assets/UsBook.png',
+                width: width * 0.7,
+                height: height * 0.3,
+                fit: BoxFit.contain,
+              ),
+          
+          
+              // Heading
+              Text(
+                'Add And List Your Book',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: width * 0.04,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+          
+              // Description
+              Text(
+                'Explore Library of fitur UsBook',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: width * 0.035,
+                  fontFamily: 'Poppins',
+                ),
+              ),
+          
+              Text(
+                'Read anywhere Add anytime',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: width * 0.035,
+                  fontFamily: 'Poppins',
+                ),
+              ),
+          
+              SizedBox(height: height * 0.03),
+          
+              // Button
+              Center(
+                child: CustomButton(
+                  text: 'Get Started',
+                  onPressed: _goNext,
+                ),
+              ),
 
-                
-                Positioned(
-                  top: size.height * 0.12,
-                  left: 0,
-                  right: 0,
-                  child: Center(
-                    child: Text(
-                      'List Buku Favorit Anda!',
-                      style: TextStyle(
-                        fontSize: size.width * 0.04,
-                        fontFamily: 'Poppins',
-                      ),
-                    ),
-                  ),
-                ),
-
-               
-                Positioned(
-                  top: size.height * 0.18,
-                  left: 0,
-                  right: 0,
-                  child: Center(
-                    child: Image.asset(
-                      'assets/UsBook.png',
-                      width: size.width * 0.7,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-
-               
-                Positioned(
-                  top: size.height * 0.57,
-                  left: 0,
-                  right: 0,
-                  child: Center(
-                    child: Text(
-                      'Add And List Your Book',
-                      style: TextStyle(
-                        fontSize: size.width * 0.055,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                  ),
-                ),
-
-               
-                Positioned(
-                  top: size.height * 0.62,
-                  left: 0,
-                  right: 0,
-                  child: Center(
-                    child: Text(
-                      'Explore Library of fitur UsBook',
-                      style: TextStyle(
-                        fontSize: size.width * 0.035,
-                        fontFamily: 'Poppins',
-                      ),
-                    ),
-                  ),
-                ),
-
-                
-                Positioned(
-                  top: size.height * 0.65,
-                  left: 0,
-                  right: 0,
-                  child: Center(
-                    child: Text(
-                      'Read anywhere Add anytime',
-                      style: TextStyle(
-                        fontSize: size.width * 0.035,
-                        fontFamily: 'Poppins',
-                      ),
-                    ),
-                  ),
-                ),
-
-               
-                Positioned(
-                  bottom: size.height * 0.05,
-                  left: 0,
-                  right: 0,
-                  child: Center(
-                    child: CustomButton(
-                      text: 'Get Started',
-                      onPressed: _goNext,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              SizedBox(height: height * 0.09,)
+            ],
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 }

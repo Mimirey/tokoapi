@@ -18,7 +18,7 @@ class CustomButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         width: size.width * 0.72,   
-        height: size.height * 0.08, 
+        height: size.height * 0.10, 
         decoration: BoxDecoration(
           color: const Color(0xFF7FBC95),
           borderRadius: BorderRadius.circular(100),
@@ -32,7 +32,7 @@ class CustomButton extends StatelessWidget {
           text,
           style: TextStyle(
             color: Colors.white,
-            fontSize: size.width * 0.05, 
+            fontSize: size.width * 0.045, 
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w600,
           ),
