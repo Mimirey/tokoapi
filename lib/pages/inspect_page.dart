@@ -13,7 +13,7 @@ class InspectPage extends StatelessWidget {
             aspectRatio: 9 / 16,
             child: Stack(
               children: [
-                /// HEADER
+                //header
                 Positioned(
                   top: 0,
                   left: 0,
@@ -24,7 +24,7 @@ class InspectPage extends StatelessWidget {
                   ),
                 ),
 
-                /// TITLE
+                //title
                 const Positioned(
                   left: 20,
                   top: 12,
@@ -39,7 +39,7 @@ class InspectPage extends StatelessWidget {
                   ),
                 ),
 
-                /// SUBTITLE
+                
                 const Positioned(
                   left: 20,
                   top: 52,
@@ -53,7 +53,7 @@ class InspectPage extends StatelessWidget {
                   ),
                 ),
 
-                /// CARD
+                //card
                 Positioned(
                   left: 20,
                   right: 20,
@@ -67,7 +67,6 @@ class InspectPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        /// IMAGE FROM URL
                         Center(
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
@@ -105,7 +104,7 @@ class InspectPage extends StatelessWidget {
 
                         const SizedBox(height: 20),
 
-                        /// JUDUL
+                        
                         const Text(
                           'Judul',
                           style: TextStyle(
@@ -126,7 +125,7 @@ class InspectPage extends StatelessWidget {
 
                         const SizedBox(height: 16),
 
-                        /// DESKRIPSI
+                        
                         const Text(
                           'Deskripsi',
                           style: TextStyle(
@@ -146,7 +145,7 @@ class InspectPage extends StatelessWidget {
 
                         const SizedBox(height: 16),
 
-                        /// AUTHOR
+                        
                         const Text(
                           'Author',
                           style: TextStyle(
@@ -168,7 +167,7 @@ class InspectPage extends StatelessWidget {
 
                         const SizedBox(height: 24),
 
-                        /// BACK BUTTON
+                        
                         Center(
                           child: Container(
                             width: 220,
